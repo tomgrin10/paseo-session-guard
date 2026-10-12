@@ -1,6 +1,6 @@
 {
   "name": "paseo-session-guard",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "type": "module",
   "license": "MIT",
   "description": "Pause Paseo agents at their session quota and continue them after reset.",
