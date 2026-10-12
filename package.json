@@ -1,0 +1,49 @@
+{
+  "name": "paseo-session-guard",
+  "version": "0.4.3",
+  "type": "module",
+  "license": "MIT",
+  "description": "Pause Paseo agents at their session quota and continue them after reset.",
+  "author": "Tom Gringauz",
+  "files": [
+    "paseo-plugin.json",
+    "index.client.tsx",
+    "index.server.ts",
+    "client/",
+    "server/",
+    "shared/",
+    "README.md",
+    "LICENSE",
+    "docs/"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "check": "node check-build.mjs",
+    "verify": "npm run typecheck && npm test && npm run check"
+  },
+  "devDependencies": {
+    "@getpaseo/client": "0.10.1",
+    "@getpaseo/plugin": "0.10.1",
+    "@getpaseo/protocol": "0.10.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.0",
+    "esbuild": "^0.28.2",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "typescript": "^5.9.3",
+    "zod": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomgrin10/paseo-session-guard.git"
+  },
+  "homepage": "https://github.com/tomgrin10/paseo-session-guard#readme",
+  "bugs": "https://github.com/tomgrin10/paseo-session-guard/issues",
+  "keywords": [
+    "paseo",
+    "paseo-plugin",
+    "automation",
+    "session-usage"
+  ]
+}
