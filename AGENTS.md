@@ -15,3 +15,6 @@
 - .github/workflows/publish-npm.yml validates the tag, runs verification and package inspection, and publishes with npm Trusted Publishing through GitHub OIDC. Do not publish manually.
 - Keep npm publisher permissions scoped to tomgrin10/paseo-session-guard and publish-npm.yml. No long-lived npm token is needed in GitHub.
 - Wait for the workflow and registry integrity check before creating a GitHub release or updating an installed copy. Test the bare package-name installer in an isolated Paseo home; never restart the user's daemon.
+
+- Server SDK API types must come through `PluginHandlerContext` from `@getpaseo/plugin/server`. Direct type imports from `@getpaseo/client` are rejected by the host compiler when installing an npm package without development dependencies.
+- `scripts/check-package-install.mjs` packs the actual artifact, serves it through an isolated loopback npm fixture, and installs its bare package name in a fresh Paseo daemon. Keep this check in verification and install the pinned Paseo CLI in CI.

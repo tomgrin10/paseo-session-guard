@@ -1,8 +1,8 @@
-import type { PaseoApi } from "@getpaseo/client";
+import type { PluginHandlerContext } from "@getpaseo/plugin/server";
 import type { Notification } from "../shared/timeline.ts";
 
 export type PublishTimeline = (agentId: string, notification: Notification, reconcile: boolean) => Promise<void>;
-export function timelinePublisher(api: () => Promise<PaseoApi>): PublishTimeline {
+export function timelinePublisher(api: () => Promise<PluginHandlerContext["paseo"]>): PublishTimeline {
   return async (agentId, notification, reconcile) => {
     const timeline = (await api()).agents.ref(agentId).timeline;
     if (reconcile) {

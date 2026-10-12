@@ -1,6 +1,6 @@
 {
   "name": "paseo-session-guard",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "type": "module",
   "license": "MIT",
   "description": "Pause Paseo agents at their session quota and continue them after reset.",
@@ -19,7 +19,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.ts",
-    "check": "node check-build.mjs",
+    "check": "node check-build.mjs && node scripts/check-package-install.mjs",
     "verify": "npm run typecheck && npm test && npm run check"
   },
   "devDependencies": {

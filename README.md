@@ -50,7 +50,7 @@ npm run verify
 npm pack --dry-run
 ```
 
-Checks cover quota/reset handling, persistence, synthetic Linux process trees, compilation without runtime dependencies, and cleanup. Reload only this plugin with `paseo plugin reload paseo-session-guard`; keep your daemon running.
+Checks cover quota/reset handling, persistence, synthetic Linux process trees, compilation without runtime dependencies, a real npm install in an isolated daemon, and cleanup. Reload only this plugin with `paseo plugin reload paseo-session-guard`; keep your daemon running.
 
 ## License
 
