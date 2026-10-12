@@ -1,7 +1,8 @@
 # paseo-session-guard
 
+[![npm version](https://img.shields.io/npm/v/paseo-session-guard?style=for-the-badge&color=cb3837)](https://www.npmjs.com/package/paseo-session-guard)
+[![npm downloads](https://img.shields.io/npm/dm/paseo-session-guard?style=for-the-badge&color=cb3837)](https://www.npmjs.com/package/paseo-session-guard)
 [![Paseo](https://img.shields.io/badge/Paseo-%E2%89%A5%200.10.1-8A63D2?style=for-the-badge)](https://paseo.sh)
-[![CI](https://img.shields.io/github/actions/workflow/status/tomgrin10/paseo-session-guard/ci.yml?branch=main&style=for-the-badge&label=tests&color=2563eb)](https://github.com/tomgrin10/paseo-session-guard/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/tomgrin10/paseo-session-guard?style=for-the-badge&color=2563eb)](LICENSE)
 
 Pause agents at their provider's session limit and continue the same conversations after reset, even when the Paseo app is closed.
@@ -15,7 +16,7 @@ Native pause demo in Paseo; no provider quota was changed.
 Requires [Paseo](https://paseo.sh) **0.10.1 or newer**. Enable plugins in **Settings → Plugins**, then run on each host:
 
 ```sh
-paseo plugin install https://github.com/tomgrin10/paseo-session-guard.git
+paseo plugin install paseo-session-guard
 ```
 
 Update with `paseo plugin update paseo-session-guard`.
@@ -51,14 +52,17 @@ npm pack --dry-run
 
 Checks cover quota/reset handling, persistence, synthetic Linux process trees, compilation without runtime dependencies, and cleanup. Reload only this plugin with `paseo plugin reload paseo-session-guard`; keep your daemon running.
 
-## More Paseo plugins
+## License
+
+[MIT](LICENSE) © 2026 Tom Gringauz. Daemon connection and reset-window handling adapted from [Defer](https://github.com/tomgrin10/paseo-defer).
+
+## Other plugins
 
 - [Defer](https://github.com/tomgrin10/paseo-defer) — Schedule messages for later delivery.
 - [Graphite](https://github.com/tomgrin10/paseo-graphite) — Graphite stacks and PR status.
 - [Smart Session](https://github.com/tomgrin10/paseo-smart-session) — Context compaction and usage insights.
 - [Vitals](https://github.com/tomgrin10/paseo-vitals) — Host, agent, and Docker health.
-- [Send to Paseo](https://github.com/tomgrin10/send-to-paseo) — Send PRs to Paseo from Chrome.
-
-## License
-
-[MIT](LICENSE) © 2026 Tom Gringauz. Daemon connection and reset-window handling adapted from [Defer](https://github.com/tomgrin10/paseo-defer).
+- [Transfer](https://github.com/tomgrin10/paseo-transfer) — Copy or move workspaces between hosts.
+- [Transcript Search](https://github.com/tomgrin10/paseo-transcript-search) — Search conversations across connected hosts.
+- [Send to Paseo](https://github.com/tomgrin10/send-to-paseo) — Send GitHub and Graphite PRs to Paseo from Chrome.
+- [Dispatch](https://github.com/tomgrin10/paseo-dispatch) — Route tasks to existing workspaces (development preview).
