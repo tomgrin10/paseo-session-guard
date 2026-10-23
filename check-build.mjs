@@ -25,7 +25,7 @@ try {
     const requirePlugin=require('node:module').createRequire(${JSON.stringify(join(process.cwd(), "package.json"))});
     const z=requirePlugin('zod');
     const definitions={};
-    const sdk={defineRpc:x=>x,defineSettings:x=>x};
+    const sdk={defineRpc:x=>x,defineSettings:x=>x,settingsRpc:id=>({read:{name:'settings.'+id+'.read'}})};
     const bundle=require('./server.cjs')(id=>id==='@getpaseo/plugin'?sdk:id==='zod'?z:requirePlugin(id));
     const cleanup=bundle.default({
       registerSettings:definition=>({read:async()=>({status:'ready',revision:'1',values:definition.schema.parse({enabled:false})}),subscribe:()=>()=>{}}),

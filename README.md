@@ -56,6 +56,12 @@ Checks cover quota/reset handling, persistence, synthetic Linux process trees, c
 
 [MIT](LICENSE) © 2026 Tom Gringauz. Daemon connection and reset-window handling adapted from [Defer](https://github.com/tomgrin10/paseo-defer).
 
+## Navigation and display
+
+Open this plugin from Command-K or its sidebar entry. **Overview** and **Display settings** link the main view and settings directly, without opening the Plugins settings page. Hiding a sidebar entry keeps Command-K available.
+
+Display settings can also hide this plugin's workspace header or composer buttons independently. Hidden buttons stay hidden for newly opened workspaces; restoring them retains the latest button status.
+
 ## Other plugins
 
 - [Defer](https://github.com/tomgrin10/paseo-defer) — Schedule messages for later delivery.
@@ -66,3 +72,5 @@ Checks cover quota/reset handling, persistence, synthetic Linux process trees, c
 - [Transcript Search](https://github.com/tomgrin10/paseo-transcript-search) — Search conversations across connected hosts.
 - [Send to Paseo](https://github.com/tomgrin10/send-to-paseo) — Send GitHub and Graphite PRs to Paseo from Chrome.
 - [Dispatch](https://github.com/tomgrin10/paseo-dispatch) — Route tasks to existing workspaces (development preview).
+
+- [Follow-up](https://github.com/tomgrin10/paseo-follow-up) — Track workspace PRs, remaining tasks and completion.

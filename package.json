@@ -20,7 +20,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/*.test.ts",
     "check": "node check-build.mjs && node scripts/check-package-install.mjs",
-    "verify": "npm run typecheck && npm test && npm run check"
+    "verify": "npm run typecheck && npm test && npm run check && node --test button-visibility.test.mjs"
   },
   "devDependencies": {
     "@getpaseo/client": "0.10.1",

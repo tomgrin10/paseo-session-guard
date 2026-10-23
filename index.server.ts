@@ -1,3 +1,4 @@
+import { displayPreferences } from "./shared/display";
 import type { PluginHandlerContext, PluginServerContext } from "@getpaseo/plugin/server";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -11,6 +12,7 @@ import { timelinePublisher } from "./server/timeline.ts";
 import { closeConnections, withDaemon } from "./server/daemon.ts";
 
 export default function contribute(server: PluginServerContext) {
+  server.registerSettings(displayPreferences);
   let runtime: PluginHandlerContext["paseo"] | null = null;
   server.handle(runtimeRpc, (_, context) => { runtime = context.paseo; return { ok: true }; });
   const publish = timelinePublisher(async () => {
