@@ -64,7 +64,7 @@ export function contributePills(client: PluginClientContext, icons: Readonly<Rec
           { kind: "item" as const, id: "paused-sessions", title: "All paused sessions", icon: "Pause",
             behavior: { kind: "action" as const, onPress: () => { client.openSurface("paused"); } } },
           { kind: "item" as const, id: "settings", title: "Session Guard settings", icon: "Settings",
-            behavior: { kind: "action" as const, onPress: () => { client.openSettings("policy"); } } },
+            behavior: { kind: "action" as const, onPress: () => { client.openSurface("policy"); } } },
         ] },
       };
       if (handle) { handle.registration.update(button); handle.signature = signature; }
