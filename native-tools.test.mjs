@@ -20,3 +20,10 @@ test("quota status resolves the caller identity without accepting an agent argum
   assert.throws(() => definitions[0].input.parse({ agentId: "other" }));
   assert.equal((await call(definitions[0], {})).structuredContent.protected, true); assert.equal(received, "caller");
 });
+
+test("a disabled host policy cannot claim that a session override protects work", async () => {
+  const { module } = await tools({}, async () => ({}));
+  assert.deepEqual(module.callerProtection(false, true, true), { enabled: false, protected: false, override: true });
+  assert.equal(module.callerProtection(true, true, false).protected, false);
+  assert.equal(module.callerProtection(true, false, true).protected, true);
+});

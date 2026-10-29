@@ -1,6 +1,10 @@
 import { defineAgentTool, type PluginServerContext } from "@getpaseo/plugin/server";
 import { z } from "zod";
 import { registerAgentTools } from "./agent-tools.ts";
+/** The host master switch always outranks a session's saved preference. */
+export function callerProtection(enabled: boolean, protectByDefault: boolean, override: boolean | undefined) {
+  return { enabled, protected: enabled && (override ?? protectByDefault), override: override ?? null };
+}
 export function contributeAgentTools(server: PluginServerContext, read: (agentId: string) => Promise<unknown>) {
   return registerAgentTools(server, [defineAgentTool({
     name: "session_guard_status", description: "Read this agent's quota protection, pending resumption and provider reset times. Other agents' pauses and continuation text are excluded. Does not disable protection or resume a paused session.",

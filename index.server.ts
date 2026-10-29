@@ -1,4 +1,4 @@
-import { contributeAgentTools } from "./server/native-tools.ts";
+import { contributeAgentTools, callerProtection } from "./server/native-tools.ts";
 import { displayPreferences } from "./shared/display";
 import type { PluginHandlerContext, PluginServerContext } from "@getpaseo/plugin/server";
 import { homedir } from "node:os";
@@ -68,8 +68,7 @@ export default function contribute(server: PluginServerContext) {
     const policy = await readPolicy();
     return {
       checkedAt: engine.checkedAt, error: loadError ?? engine.error,
-      override: state.overrides[agentId] ?? null,
-      protected: state.overrides[agentId] ?? policy.protectByDefault,
+      ...callerProtection(policy.enabled, policy.protectByDefault, state.overrides[agentId]),
       pauses: state.pauses.filter(pause => pause.agentId === agentId).map(pause => ({ id: pause.id, phase: pause.phase, provider: pause.provider, resetsAt: pause.anchorResetsAt })),
       providers: (engine.usage?.providers ?? []).map(provider => {
         const window = sessionWindow(provider, policy);
