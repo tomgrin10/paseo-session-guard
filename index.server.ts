@@ -1,3 +1,4 @@
+import { contributeAgentTools } from "./server/native-tools.ts";
 import { displayPreferences } from "./shared/display";
 import type { PluginHandlerContext, PluginServerContext } from "@getpaseo/plugin/server";
 import { homedir } from "node:os";
@@ -61,6 +62,21 @@ export default function contribute(server: PluginServerContext) {
     await ready;
     if (!owner || stopped) throw new Error(loadError ?? "Session Guard is stopping.");
   };
+  const removeTools = contributeAgentTools(server, async agentId => {
+    await requireOwner();
+    const state = await engine.exclusive(() => store.read());
+    const policy = await readPolicy();
+    return {
+      checkedAt: engine.checkedAt, error: loadError ?? engine.error,
+      override: state.overrides[agentId] ?? null,
+      protected: state.overrides[agentId] ?? policy.protectByDefault,
+      pauses: state.pauses.filter(pause => pause.agentId === agentId).map(pause => ({ id: pause.id, phase: pause.phase, provider: pause.provider, resetsAt: pause.anchorResetsAt })),
+      providers: (engine.usage?.providers ?? []).map(provider => {
+        const window = sessionWindow(provider, policy);
+        return { providerId: provider.providerId, usedPct: window ? usedPct(window) : null, resetsAt: window?.resetsAt ?? null };
+      }),
+    };
+  });
   server.handle(statusRpc, async (_, context) => {
     runtime = context.paseo;
     await ready;
@@ -105,6 +121,7 @@ export default function contribute(server: PluginServerContext) {
   return async () => {
     stopped = true;
     if (timer !== null) clearTimeout(timer);
+    removeTools();
     removeSettings(); removeTurnStarted(); removeTurnEnded();
     const drain = engine.stop(); const drainLabels = labels.stop();
     await closeConnections(); await drain; await drainLabels; await ready;

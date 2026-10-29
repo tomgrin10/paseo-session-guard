@@ -31,6 +31,7 @@ try {
       registerSettings:definition=>({read:async()=>({status:'ready',revision:'1',values:definition.schema.parse({enabled:false})}),subscribe:()=>()=>{}}),
       handle:(contract,handler)=>definitions[contract.name]=input=>handler(input,{paseo:{}}),
       on:()=>()=>{},
+      before:()=>()=>{},
     });
     (async()=>{
       const result=await definitions['guard.status']({});

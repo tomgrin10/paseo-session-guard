@@ -1,1 +1,6 @@
-{ "id": "paseo-session-guard", "requirements": { "paseo": ">=0.10.1" } }
+{
+  "id": "paseo-session-guard",
+  "requirements": {
+    "paseo": ">=0.14.0"
+  }
+}

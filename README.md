@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/paseo-session-guard?style=for-the-badge&color=cb3837)](https://www.npmjs.com/package/paseo-session-guard)
 [![npm downloads](https://img.shields.io/npm/dm/paseo-session-guard?style=for-the-badge&color=cb3837)](https://www.npmjs.com/package/paseo-session-guard)
-[![Paseo](https://img.shields.io/badge/Paseo-%E2%89%A5%200.10.1-8A63D2?style=for-the-badge)](https://paseo.sh)
+[![Paseo](https://img.shields.io/badge/Paseo-%E2%89%A5%200.14.0-8A63D2?style=for-the-badge)](https://paseo.sh)
 [![License](https://img.shields.io/github/license/tomgrin10/paseo-session-guard?style=for-the-badge&color=2563eb)](LICENSE)
 
 Pause agents at their provider's session limit and continue the same conversations after reset, even when the Paseo app is closed.
@@ -13,7 +13,7 @@ Native pause demo in Paseo; no provider quota was changed.
 
 ## Install
 
-Requires [Paseo](https://paseo.sh) **0.10.1 or newer**. Enable plugins in **Settings → Plugins**, then run on each host:
+Requires [Paseo](https://paseo.sh) **0.14.0 or newer**. Enable plugins in **Settings → Plugins**, then run on each host:
 
 ```sh
 paseo plugin install paseo-session-guard
@@ -61,6 +61,16 @@ Checks cover quota/reset handling, persistence, synthetic Linux process trees, c
 Open this plugin from Command-K or its sidebar entry. **Overview** and **Display settings** link the main view and settings directly, without opening the Plugins settings page. Hiding a sidebar entry keeps Command-K available.
 
 Display settings can also hide this plugin's workspace header or composer buttons independently. Hidden buttons stay hidden for newly opened workspaces; restoring them retains the latest button status.
+
+## Paseo 0.14 agent integration
+
+`session_guard_status` reports the calling agent’s effective quota protection, pauses and reset times. It excludes other agents’ pauses and all continuation text, and cannot disable protection or resume work.
+
+Requires Paseo **0.14.0 or newer**. Agent tools are scoped to interactive Claude
+and Codex sessions; history-only opens receive none. They become available on
+the next idle session open after install or reload. The agent label
+`plugin-tools/enabled: "false"` opts a session out. Existing plugin data and
+settings are retained.
 
 ## Other plugins
 

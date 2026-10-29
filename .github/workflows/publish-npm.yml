@@ -70,7 +70,7 @@ jobs:
           console.log(`::add-mask::${body.token}`);
           console.log(`npm trusted publishing authorization verified for ${name}.`);
           JS
-      - run: npm install --global @getpaseo/cli@0.11.0
+      - run: npm install --global @getpaseo/cli@0.14.0
       - run: npm ci
       - run: npm run verify
       - run: npm pack --dry-run
