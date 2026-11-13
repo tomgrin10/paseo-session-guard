@@ -5,6 +5,12 @@
 [![Paseo](https://img.shields.io/badge/Paseo-%E2%89%A5%200.14.0-8A63D2?style=for-the-badge)](https://paseo.sh)
 [![License](https://img.shields.io/github/license/tomgrin10/paseo-session-guard?style=for-the-badge&color=2563eb)](LICENSE)
 
+
+> [!IMPORTANT]
+> **Session Guard now ships inside [Smart Session](https://github.com/tomgrin10/paseo-smart-session).** This repository is archived, and the `paseo-session-guard` package gets no more updates.
+>
+> To move: run `paseo plugin install paseo-smart-session` (3.6.2 or later), then `paseo plugin remove paseo-session-guard`, or disable it in **Settings → Plugins**. Smart Session takes over within about 15 seconds. Paused sessions and per-session choices carry over; settings start from defaults. Details: [Moving from the standalone plugin](https://github.com/tomgrin10/paseo-smart-session/blob/main/docs/session-guard.md#moving-from-the-standalone-plugin).
+
 Pause agents at their provider's session limit and continue the same conversations after reset, even when the Paseo app is closed.
 
 ![Session Guard native pause demo with Resume now and Dismiss pause controls](docs/screenshots/session-guard.png)
